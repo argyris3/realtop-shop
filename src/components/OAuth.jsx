@@ -1,9 +1,9 @@
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import { doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore';
-import { FcGoogle } from 'react-icons/fc';
-import { toast } from 'react-toastify';
-import { db } from '../firebase';
-import { useNavigate } from 'react-router-dom';
+import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { doc, getDoc, serverTimestamp, setDoc } from "firebase/firestore";
+import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
+import { db } from "../firebase";
+import { useNavigate } from "react-router-dom";
 export default function OAuth() {
   const navigate = useNavigate();
   async function onGoogleClick() {
@@ -15,7 +15,7 @@ export default function OAuth() {
 
       // check for the user
 
-      const docRef = doc(db, 'users', user.uid);
+      const docRef = doc(db, "users", user.uid);
       const docSnap = await getDoc(docRef);
 
       if (!docSnap.exists()) {
@@ -26,9 +26,9 @@ export default function OAuth() {
         });
       }
 
-      navigate('/');
+      navigate("/");
     } catch (error) {
-      toast.error('Could not authorize with Google');
+      toast.error("Could not authorize with Google");
     }
   }
   return (
